@@ -5,7 +5,7 @@ import ProgressBar from '../kycform1/ProgressBar';
 const IDProofAndSelfie = () => {
   useEffect(() => {
     const timer = setTimeout(() => {
-      window.location.href = 'https://www.google.com/search?q=react+js+documentation&oq=&gs_lcrp=EgZjaHJvbWUqCQgBECMYJxjqAjIJCAAQIxgnGOoCMgkIARAjGCcY6gIyCQgCECMYJxjqAjIJCAMQIxgnGOoCMgkIBBAjGCcY6gIyCQgFECMYJxjqAjIJCAYQIxgnGOoCMgkIBxAjGCcY6gLSAQkxOTg4MmowajeoAgiwAgE&sourceid=chrome&ie=UTF-8';
+      window.location.href = 'http://localhost:3000/KycVerification/kycform1';
     }, 2000); // 5000 milliseconds = 5 seconds
     return () => clearTimeout(timer);
   }, []);

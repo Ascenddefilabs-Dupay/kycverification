@@ -24,16 +24,16 @@ const DocumentForm = () => {
             const handleSaveAndRedirect = async () => {
                 const data = { country, document_type: documentType };
                 try {
-                    await axios.post('http://localhost:8000/api/documents/', data);
+                    await axios.post('http://localhost:8000/api/kyc-details/', data);
                     alert('Document saved successfully!');
                     // Define redirection URLs based on document type
                     let redirectUrl = '';
                     if (documentType === 'PanCard') {
-                        redirectUrl = 'http://localhost:3000/kycverification/PanVerification';
+                        redirectUrl = 'http://localhost:3000/KycVerification/PanVerification';
                     } else if (documentType === 'AdharCard') {
-                        redirectUrl = 'http://localhost:3000/kycverification/AdharVerification';
+                        redirectUrl = 'http://localhost:3000/KycVerification/AdharVerification';
                     } else {
-                        redirectUrl = 'http://localhost:3000/kycverification/kyc3'; // Default redirection
+                        redirectUrl = 'http://localhost:3000/KycVerification/kyc3'; // Default redirection
                     }
                     router.push(redirectUrl);
                 } catch (error) {
