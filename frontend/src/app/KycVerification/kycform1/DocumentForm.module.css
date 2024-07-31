@@ -1,0 +1,97 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: whitesmoke;
+}
+
+.card {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 80%;
+    max-width: 400px; 
+}
+
+.h1 {
+    text-align: center;
+    font-size: 30px;
+    margin-bottom: 10px;
+    color: black;
+    font-weight: bold;
+    font-family: Oxygen, sans-serif;
+}
+
+.label {
+    display: block;
+    margin-bottom: 10px;
+    color: black;
+    font-family: Oxygen, sans-serif;
+}
+
+.select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    color: black;
+    font-family: Oxygen, sans-serif;
+}
+
+.documentButtons {
+    display: flex;
+    flex-direction: column;
+    gap: 10px; 
+    margin-top: 10px;
+}
+
+.button {
+    background-color: white;
+    color: rgb(24, 23, 23);
+    border: none;
+    padding: 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    text-align: center; 
+    width: 100%;
+    transition: background-color 0.3s ease;
+    border: 1.5px solid #ccc;
+    font-family: Oxygen, sans-serif;
+}
+
+.button:hover {
+    background-color: green;
+}
+
+.activeButton {
+    background-color: #005bb5; 
+}
+
+.progress-container {
+    width: 100%;
+    background-color: #732b2b;
+    border-radius: 5px;
+    overflow: hidden;
+    position: relative;
+    margin: 20px 0;
+  }
+  
+  .progress-bar {
+    height: 20px;
+    background-color: #4caf50;
+    transition: width 0.3s ease-in-out;
+  }
+  
+  .progress-text {
+    position: absolute;
+    right: 10px;
+    top: 0;
+    height: 20px;
+    line-height: 20px;
+    color: #333;
+    font-size: 14px;
+    font-weight: bold;
+  }
