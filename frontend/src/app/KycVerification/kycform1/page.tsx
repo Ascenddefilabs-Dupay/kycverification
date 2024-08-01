@@ -29,11 +29,6 @@ const DocumentForm = () => {
                     // Define redirection URLs based on document type
                     let redirectUrl = '';
                     if (documentType === 'PanCard') {
-                        redirectUrl = 'http://localhost:3000/KycVerification/PanVerification';
-                    } else if (documentType === 'AdharCard') {
-                        redirectUrl = 'http://localhost:3000/KycVerification/AdharVerification';
-                    } else {
-                        redirectUrl = 'http://localhost:3000/KycVerification/kyc3'; // Default redirection
                     }
                     router.push(redirectUrl);
                 } catch (error) {

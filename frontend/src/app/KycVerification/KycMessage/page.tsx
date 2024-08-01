@@ -5,8 +5,6 @@ import ProgressBar from '../kycform1/ProgressBar';
 const IDProofAndSelfie = () => {
   useEffect(() => {
     const timer = setTimeout(() => {
-      window.location.href = 'http://localhost:3000/KycVerification/kycform1';
-    }, 2000); // 5000 milliseconds = 5 seconds
     return () => clearTimeout(timer);
   }, []);
 
@@ -28,31 +26,29 @@ const IDProofAndSelfie = () => {
 const styles = {
   container: {
     display: 'flex',
-    flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'center',
     height: '100vh',
-    backgroundColor: 'whitesmoke',
-    padding: '20px',
+    backgroundColor: 'white',
   },
   card: {
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
     textAlign: 'center',
-    backgroundColor: 'white',
+    backgroundColor: 'black',
     borderRadius: '8px',
     boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
     padding: '20px',
     maxWidth: '400px',
-    width: '100%',
+    width: '80%',
     boxSizing: 'border-box',
   },
   title: {
-    margin: 0,
+    margin: '20px',
     fontSize: '25px',
     fontWeight: 'bold',
-    color: 'black',
+    color: 'white',
   },
   menuButton: {
     backgroundColor: 'transparent',
@@ -79,11 +75,11 @@ const styles = {
     fontSize: '24px',
     fontWeight: 'bold',
     margin: '0 0 10px 0',
-    color: 'black',
+    color: 'white',
   },
   message: {
     fontSize: '16px',
-    color: '#777',
+    color: '#999',
   },
 }
 
