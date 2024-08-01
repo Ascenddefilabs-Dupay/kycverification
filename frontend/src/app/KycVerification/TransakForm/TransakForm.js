@@ -1,7 +1,7 @@
 'use client'
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { useRouter } from 'next/navigation'; // Import useRouter from next/navigation
+import { useRouter } from 'next/navigation';
 import styles from './TransakForm.module.css';
 import ProgressBar from '../kycform1/ProgressBar';
 
@@ -13,7 +13,7 @@ const TransakForm = () => {
   });
 
   const [isSubmitEnabled, setIsSubmitEnabled] = useState(false);
-  const router = useRouter(); // Initialize useRouter from next/navigation
+  const router = useRouter();
 
   const handleChange = (event) => {
     const { name, checked } = event.target;
@@ -31,8 +31,7 @@ const TransakForm = () => {
     axios.post('http://localhost:8000/api/kyc-details/', formData)
       .then(response => {
         console.log(response.data);
-        // Navigate to the next page after successful submission
-        router.push('./kycform1'); // Replace '/nextPage' with your desired URL
+        router.push('./kycform1');
       })
       .catch(error => {
         console.error('There was an error!', error);
@@ -83,13 +82,15 @@ const TransakForm = () => {
               Buying crypto to use a web3 protocol
             </label>
           </div>
-          <button
-            className={`${styles.button1} ${isSubmitEnabled ? styles.activeButton : ''}`}
-            type="submit"
-            disabled={!isSubmitEnabled}
-          >
-            Next
-          </button>
+          <div className={styles['button-sub']}>
+            <button
+              className={styles.button1}
+              type="submit"
+              disabled={!isSubmitEnabled}
+            >
+              Next
+            </button>
+          </div>
         </form>
       </div>
     </div>
