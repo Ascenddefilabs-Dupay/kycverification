@@ -3,7 +3,7 @@
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-color: whitesmoke;
+    background-color: rgba(245, 245, 245, 0);
 }
 
 .card {
@@ -34,10 +34,11 @@
 .select {
     width: 100%;
     padding: 8px;
-    border: 1px solid #ccc;
+    border: 2px solid #ccc;
     border-radius: 4px;
     color: black;
     font-family: Oxygen, sans-serif;
+    background-color: whitesmoke;
 }
 
 .documentButtons {
@@ -48,7 +49,7 @@
 }
 
 .button {
-    background-color: white;
+    background-color: whitesmoke;
     color: rgb(24, 23, 23);
     border: none;
     padding: 10px;
@@ -58,7 +59,7 @@
     text-align: center; 
     width: 100%;
     transition: background-color 0.3s ease;
-    border: 1.5px solid #ccc;
+    border: 2px solid #ccc;
     font-family: Oxygen, sans-serif;
 }
 
