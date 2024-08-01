@@ -16,6 +16,9 @@ class KYCDetail(models.Model):
     adhar_image = models.ImageField(upload_to='adhar_images/', blank=True, null=True)
     pan_number = models.CharField(max_length=10, blank=True, null=True)
     pan_image = models.ImageField(upload_to='pan_images/', blank=True, null=True)
+    investment = models.BooleanField(default=False, blank=True, null=True)
+    nfts = models.BooleanField(default=False, blank=True, null=True)
+    web3 = models.BooleanField(default=False, blank=True, null=True)
 
     def __str__(self):
         return self.adhar_number
