@@ -29,11 +29,6 @@ const DocumentForm = () => {
                     // Define redirection URLs based on document type
                     let redirectUrl = '';
                     if (documentType === 'PanCard') {
-                        redirectUrl = './PanVerification';
-                    } else if (documentType === 'AdharCard') {
-                        redirectUrl = './AdharVerification';
-                    } else {
-                        redirectUrl = './KycMessage'; // Default redirection
                     }
                     router.push(redirectUrl);
                 } catch (error) {

@@ -5,8 +5,6 @@ import ProgressBar from '../kycform1/ProgressBar';
 const IDProofAndSelfie = () => {
   useEffect(() => {
     const timer = setTimeout(() => {
-      window.location.href = './TransakForm';
-    }, 2000000); // 5000 milliseconds = 5 seconds
     return () => clearTimeout(timer);
   }, []);
 
