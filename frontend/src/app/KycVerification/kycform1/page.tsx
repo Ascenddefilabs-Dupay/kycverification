@@ -10,8 +10,8 @@ const countries = [
 ];
 
 const documentOptions = {
-    India: ['PanCard', 'AdharCard', 'IDCard'],
-    Default: ['Passport', 'IDCard']
+    India: ['PanCard'],
+    Default: ['Passport']
 };
 
 const DocumentForm = () => {
