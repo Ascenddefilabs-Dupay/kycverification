@@ -10,7 +10,7 @@ const countries = [
 ];
 
 const documentOptions = {
-    India: ['PanCard'],
+    India: ['Next'],
     Default: ['Passport']
 };
 
@@ -27,7 +27,7 @@ const DocumentForm = () => {
                     await axios.post('http://localhost:8000/api/kyc-details/', data);
                     alert('Document saved successfully!');
                     // Define redirection URLs based on document type
-                    let redirectUrl = '';
+                    let redirectUrl = 'http://localhost:3000/KycVerification/AdharVerification';
                     if (documentType === 'PanCard') {
                     }
                     router.push(redirectUrl);

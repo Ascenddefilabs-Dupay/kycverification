@@ -13,7 +13,7 @@
 
 .progressBar {
   height: 20px;
-  background-color: #4caf50;
+  background-color: #4c54af;
   transition: width 0.3s ease-in-out;
 }
 

@@ -2,35 +2,35 @@
 
 import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import styles from './AadharForm.module.css';
 import axios from 'axios';
+import styles from './AadharForm.module.css';
+import ProgressBar from '../kycform1/ProgressBar';
 
 const AadharForm = () => {
   const [aadharNumber, setAadharNumber] = useState('');
-  const [aadharImage, setAadharImage] = useState(null);
-  const [aadharImageUrl, setAadharImageUrl] = useState(null);
+  const [aadharFrontImage, setAadharFrontImage] = useState(null);
+  const [aadharFrontImageUrl, setAadharFrontImageUrl] = useState(null);
+  const [aadharBackImage, setAadharBackImage] = useState(null);
+  const [aadharBackImageUrl, setAadharBackImageUrl] = useState(null);
   const [message, setMessage] = useState('');
   const [error, setError] = useState('');
   const [imageError, setImageError] = useState('');
   const router = useRouter();
 
-  const aadharNumberRegex = /^\d{12}$/;
+  const aadharNumberRegex = /^[0-9 ]{14}$/;
 
-  const formatAadharNumber = (value) => {
-    return value.replace(/\D/g, '').replace(/(\d{4})(?=\d)/g, '$1 ').substring(0, 14);
-  };
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-
-    const plainAadharNumber = aadharNumber.replace(/\s/g, ''); // Remove spaces for validation
-
-    if (!plainAadharNumber || !aadharNumberRegex.test(plainAadharNumber)) {
+    if (!aadharNumber || !aadharNumberRegex.test(aadharNumber)) {
       setError('Invalid Aadhar Number format.');
       return;
     }
 
-    if (aadharImage && aadharImage.size > 2 * 1024 * 1024) { // Check for image size
+    if (
+      (aadharFrontImage && aadharFrontImage.size > 2 * 1024 * 1024) ||
+      (aadharBackImage && aadharBackImage.size > 2 * 1024 * 1024)
+    ) {
       setImageError('Image size should be within 2MB.');
       return;
     }
@@ -39,10 +39,14 @@ const AadharForm = () => {
     setImageError('');
 
     const formData = new FormData();
-    formData.append('adhar_number', plainAadharNumber);
+    formData.append('adhar_number', aadharNumber.replace(/ /g, ''));
 
-    if (aadharImage) {
-      formData.append('adhar_image', aadharImage);
+    if (aadharFrontImage) {
+      formData.append('adhar_front_image', aadharFrontImage);
+    }
+
+    if (aadharBackImage) {
+      formData.append('adhar_back_image', aadharBackImage);
     }
 
     try {
@@ -53,91 +57,111 @@ const AadharForm = () => {
       });
       setMessage('Aadhar submitted successfully!');
       setAadharNumber('');
-      setAadharImage(null);
-      setAadharImageUrl(null);
+      setAadharFrontImage(null);
+      setAadharFrontImageUrl(null);
+      setAadharBackImage(null);
+      setAadharBackImageUrl(null);
 
       setTimeout(() => {
-        router.push('/KycVerification/KycMessage');
-      }, 2000);
+        router.push('/KycVerification/PanVerification');
+      }); // 5000 milliseconds = 5 seconds
 
     } catch (error) {
       console.error('Error submitting Aadhar:', error);
-      setMessage('Error submitting Aadhar.');
+      setMessage('Error submitting Aadhar. Please try again.');
     }
   };
 
-  const handleImageChange = (event) => {
-    const file = event.target.files[0];
+  const handleImageChange = (e, setImage, setImageUrl) => {
+    const file = e.target.files[0];
     if (file) {
       if (file.size > 2 * 1024 * 1024) {
         setImageError('Image size should be within 2MB.');
-        setAadharImage(null);
-        setAadharImageUrl(null);
+        setImage(null);
+        setImageUrl(null);
       } else {
         setImageError('');
-        setAadharImage(file);
-        setAadharImageUrl(URL.createObjectURL(file));
+        setImage(file);
+        setImageUrl(URL.createObjectURL(file));
       }
     }
   };
 
-  const handleAadharNumberChange = (event) => {
-    const value = event.target.value.replace(/\s/g, ''); // Remove spaces
-    if (/^\d{0,12}$/.test(value)) {
-      setAadharNumber(formatAadharNumber(value));
+  const handleAadharNumberChange = (e) => {
+    const value = e.target.value.replace(/\s/g, '');
+    if (value.length <= 12) {
+      const formattedValue = value.replace(/(\d{4})(?=\d)/g, '$1 ');
+      setAadharNumber(formattedValue);
     }
-  };
-
-  const isFormValid = () => {
-    const plainAadharNumber = aadharNumber.replace(/\s/g, ''); // Remove spaces for validation
-    return aadharNumberRegex.test(plainAadharNumber) && aadharImage && !imageError;
   };
 
   return (
     <div className={styles.formContainer}>
-      <form onSubmit={handleSubmit} className={styles.form}>
-        <h2 className={styles.heading}>Aadhar Verification</h2>
-        <div className={styles.formGroup}>
-          <label htmlFor="aadhar-number" className={styles.label}>
-            Aadhar Number:
-          </label>
-          <input
-            type="text"
-            id="aadhar-number"
-            name="aadhar-number"
-            placeholder="Enter Aadhar Number"
-            className={styles.input}
-            value={aadharNumber}
-            onChange={handleAadharNumberChange}
-            required
-          />
-        </div>
-        {error && <p className={styles.error}>{error}</p>}
-        <div className={styles.formGroup}>
-          <label htmlFor="aadhar-image" className={styles.label}>
-            Upload Image:
-          </label>
-          <div className={styles.uploadContainer}>
+      <div className={styles.card}>
+        <form onSubmit={handleSubmit} className={styles.form}>
+          <h2 className={styles.heading}>Aadhar Verification</h2>
+          <ProgressBar step={2} totalSteps={3} />
+          <div className={styles.formGroup}>
+            <label htmlFor="aadhar-number" className={styles.label}>
+              Aadhar Number:
+            </label>
             <input
-              type="file"
-              id="aadhar-image"
-              name="aadhar-image"
-              accept="image/*"
-              className={styles.inputFile}
-              onChange={handleImageChange}
+              type="text"
+              id="aadhar-number"
+              name="aadhar-number"
+              placeholder="Enter Aadhar Number"
+              className={styles.input}
+              value={aadharNumber}
+              onChange={handleAadharNumberChange}
               required
             />
-            {aadharImageUrl && (
-              <img src={aadharImageUrl} alt="Aadhar Preview" className={styles.uploadedImage} />
-            )}
           </div>
-        </div>
-        {imageError && <p className={styles.error}>{imageError}</p>}
-        <button type="submit" className={styles.submitButton} disabled={!isFormValid()}>
-          Submit
-        </button>
-        {message && <p className={styles.message}>{message}</p>}
-      </form>
+          {error && <p className={styles.error}>{error}</p>}
+          <div className={styles.formGroup}>
+            <label htmlFor="aadhar-front-image" className={styles.label}>
+              Upload Aadhar Front Image:
+            </label>
+            <div className={styles.uploadContainer}>
+              <input
+                type="file"
+                id="aadhar-front-image"
+                name="aadhar-front-image"
+                accept="image/*"
+                className={styles.inputFile}
+                onChange={(e) => handleImageChange(e, setAadharFrontImage, setAadharFrontImageUrl)}
+                required
+              />
+              {aadharFrontImageUrl && (
+                <img src={aadharFrontImageUrl} alt="Aadhar Front Preview" className={styles.uploadedImage} />
+              )}
+            </div>
+          </div>
+          <div className={styles.formGroup}>
+            <label htmlFor="aadhar-back-image" className={styles.label}>
+              Upload Aadhar Back Image:
+            </label>
+            <div className={styles.uploadContainer}>
+              <input
+                type="file"
+                id="aadhar-back-image"
+                name="aadhar-back-image"
+                accept="image/*"
+                className={styles.inputFile}
+                onChange={(e) => handleImageChange(e, setAadharBackImage, setAadharBackImageUrl)}
+                required
+              />
+              {aadharBackImageUrl && (
+                <img src={aadharBackImageUrl} alt="Aadhar Back Preview" className={styles.uploadedImage} />
+              )}
+            </div>
+          </div>
+          {imageError && <p className={styles.error}>{imageError}</p>}
+          <button type="submit" className={styles.submitButton} disabled={imageError !== ''}>
+            Submit
+          </button>
+          {message && <p className={styles.message}>{message}</p>}
+        </form>
+      </div>
     </div>
   );
 };

@@ -13,6 +13,7 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   width: 80%;
   max-width: 400px; 
+  height: 570px;
 }
 
 .h1{
@@ -31,19 +32,19 @@
   color: white;
   font-weight: bold;
   font-family: Oxygen, sans-serif;
-  margin-top: 10px;
+  margin-top: 25px;
 }
 
 .label1{
   display: block;
   margin-bottom: 10px;
-  margin-top: 10px;
+  margin-top: 20px;
   font-size: 16px;
-  color: black;
+  color: white;
   font-family: Oxygen, sans-serif;
   border: 2px solid #ccc;
   border-radius: 4px;
-  background-color: rgba(245, 245, 245, 0.773);
+  background-color: rgba(128, 128, 128, 0.253);
 }
 .button-sub {
   display: flex;
@@ -52,22 +53,25 @@
 }
 
 .button1:hover {
-  background-color: green; /* Hover color */
+  background-color: #0056b3; /* Hover color */
 }
 
 .button1 {
-  background-color: #0056b3; /* Default color */
+  margin-top: 100px;
+  background: linear-gradient(90deg, #007bff9f, #800080);
   color: white;
   padding: 10px 20px;
   border: none;
   border-radius: 10px;
   cursor: pointer;
   transition: background-color 0.3s ease;
+  width: 100%;
   
 }
 
 .input{
   margin: 10px;
+  
 }
 
 .card1{

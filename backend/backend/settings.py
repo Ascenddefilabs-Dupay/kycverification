@@ -89,7 +89,7 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django_cockroachdb',
-        'NAME': 'kyc',
+        'NAME': 'kyc1',
         'USER': 'ganesh',
         'PASSWORD': 'utjJ69CccwYISyXRE9BaKw',
         'HOST': 'database-5515.7s5.aws-ap-south-1.cockroachlabs.cloud',

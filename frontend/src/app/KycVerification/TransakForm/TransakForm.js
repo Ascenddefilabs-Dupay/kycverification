@@ -19,8 +19,8 @@ const TransakForm = () => {
     const { name, checked } = event.target;
     setFormData((prevData) => {
       const newFormData = { ...prevData, [name]: checked };
-      const allChecked = newFormData.investment && newFormData.nfts && newFormData.web3;
-      setIsSubmitEnabled(allChecked);
+      const atLeastOneChecked = newFormData.investment || newFormData.nfts || newFormData.web3;
+      setIsSubmitEnabled(atLeastOneChecked);
       return newFormData;
     });
   };
@@ -31,7 +31,7 @@ const TransakForm = () => {
     axios.post('http://localhost:8000/api/kyc-details/', formData)
       .then(response => {
         console.log(response.data);
-        router.push('./kycform1');
+        router.push('/KycVerification/kycform1');
       })
       .catch(error => {
         console.error('There was an error!', error);
@@ -39,7 +39,7 @@ const TransakForm = () => {
   };
 
   useEffect(() => {
-    setIsSubmitEnabled(formData.investment && formData.nfts && formData.web3);
+    setIsSubmitEnabled(formData.investment || formData.nfts || formData.web3);
   }, [formData]);
 
   return (
