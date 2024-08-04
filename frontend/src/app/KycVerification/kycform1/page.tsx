@@ -10,8 +10,8 @@ const countries = [
 ];
 
 const documentOptions = {
-    India: ['PanCard', 'AdharCard', 'IDCard'],
-    Default: ['Passport', 'IDCard']
+    India: ['Next'],
+    Default: ['Passport']
 };
 
 const DocumentForm = () => {
@@ -27,13 +27,8 @@ const DocumentForm = () => {
                     await axios.post('http://localhost:8000/api/kyc-details/', data);
                     alert('Document saved successfully!');
                     // Define redirection URLs based on document type
-                    let redirectUrl = '';
+                    let redirectUrl = 'http://localhost:3000/KycVerification/AdharVerification';
                     if (documentType === 'PanCard') {
-                        redirectUrl = 'http://localhost:3000/KycVerification/PanVerification';
-                    } else if (documentType === 'AdharCard') {
-                        redirectUrl = 'http://localhost:3000/KycVerification/AdharVerification';
-                    } else {
-                        redirectUrl = 'http://localhost:3000/KycVerification/kyc3'; // Default redirection
                     }
                     router.push(redirectUrl);
                 } catch (error) {

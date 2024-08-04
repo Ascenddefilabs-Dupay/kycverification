@@ -3,41 +3,44 @@
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-color: whitesmoke;
+    background-color: white;
 }
 
 .card {
-    background-color: white;
+    background-color: black;
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     width: 80%;
     max-width: 400px; 
+    height: 570px;
 }
 
 .h1 {
     text-align: center;
     font-size: 30px;
     margin-bottom: 10px;
-    color: black;
+    color: white;
     font-weight: bold;
     font-family: Oxygen, sans-serif;
 }
 
 .label {
+    margin-top: 10px;
     display: block;
     margin-bottom: 10px;
-    color: black;
+    color: white;
     font-family: Oxygen, sans-serif;
 }
 
 .select {
     width: 100%;
     padding: 8px;
-    border: 1px solid #ccc;
+    border: rgba(128, 128, 128, 0.253);
     border-radius: 4px;
-    color: black;
+    color: white;
     font-family: Oxygen, sans-serif;
+    background-color: rgba(128, 128, 128, 0.253);
 }
 
 .documentButtons {
@@ -48,8 +51,8 @@
 }
 
 .button {
-    background-color: white;
-    color: rgb(24, 23, 23);
+    background: linear-gradient(90deg, #007bff9f, #800080);
+    color: white;
     border: none;
     padding: 10px;
     border-radius: 4px;
@@ -58,12 +61,12 @@
     text-align: center; 
     width: 100%;
     transition: background-color 0.3s ease;
-    border: 1.5px solid #ccc;
+    border: 1px solid #ccc;
     font-family: Oxygen, sans-serif;
 }
 
 .button:hover {
-    background-color: green;
+    background-color: #0056b3;
 }
 
 .activeButton {
