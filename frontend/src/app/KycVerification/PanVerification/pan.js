@@ -39,14 +39,14 @@ const PanForm = () => {
     setImageError('');
 
     const formData = new FormData();
-    formData.append('pan_number', panNumber);
+    formData.append('document_number2', panNumber);
 
     if (panFrontImage) {
-      formData.append('pan_front_image', panFrontImage);
+      formData.append('document_front_image2', panFrontImage);
     }
 
     if (panBackImage) {
-      formData.append('pan_back_image', panBackImage);
+      formData.append('document_back_image2', panBackImage);
     }
 
     try {

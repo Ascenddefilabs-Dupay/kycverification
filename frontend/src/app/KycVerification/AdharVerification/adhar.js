@@ -39,14 +39,14 @@ const AadharForm = () => {
     setImageError('');
 
     const formData = new FormData();
-    formData.append('adhar_number', aadharNumber.replace(/ /g, ''));
+    formData.append('document_number1', aadharNumber.replace(/ /g, ''));
 
     if (aadharFrontImage) {
-      formData.append('adhar_front_image', aadharFrontImage);
+      formData.append('document_front_image1', aadharFrontImage);
     }
 
     if (aadharBackImage) {
-      formData.append('adhar_back_image', aadharBackImage);
+      formData.append('document_back_image1', aadharBackImage);
     }
 
     try {

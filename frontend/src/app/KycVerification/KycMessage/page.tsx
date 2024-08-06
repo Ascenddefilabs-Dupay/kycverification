@@ -5,7 +5,7 @@ import ProgressBar from '../kycform1/ProgressBar';
 const IDProofAndSelfie = () => {
   useEffect(() => {
     const timer = setTimeout(() => {
-      window.location.href = 'http://localhost:3000/KycVerification/kycform1';
+      window.location.href = 'http://localhost:3000/KycVerification/PersonalDetails';
     },2000); // 5000 milliseconds = 5 seconds
     return () => clearTimeout(timer);
   }, []);
