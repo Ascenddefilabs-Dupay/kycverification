@@ -94,10 +94,10 @@ WSGI_APPLICATION = 'backend_kycverification.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django_cockroachdb',
-        'NAME': 'kyc1',
-        'USER': 'ganesh',
-        'PASSWORD': 'utjJ69CccwYISyXRE9BaKw',
-        'HOST': 'database-5515.7s5.aws-ap-south-1.cockroachlabs.cloud',
+        'NAME': 'mydata',
+        'USER': 'sai',
+        'PASSWORD': '3qgXcO4XPCtpZusafZ83yw',
+        'HOST': 'mycockroachdb-5518.7s5.aws-ap-south-1.cockroachlabs.cloud',
         'PORT': '26257',
         # 'OPTIONS': {
         #     'sslmode': 'verify-full'
@@ -105,6 +105,7 @@ DATABASES = {
         'sslmode': 'disable',
     }
 }
+
 
 CLOUDINARY_STORAGE = {
     'CLOUD_NAME': 'dgfv6j82t',

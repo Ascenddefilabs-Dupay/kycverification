@@ -79,34 +79,45 @@ const PersonalDetailsForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (validateForm()) {
-      try {
-        const response = await axios.post('http://localhost:8000/api/kyc-details/', formData, {
-          headers: {
-            'Content-Type': 'application/json',
-          },
-        });
-        setMessage('Personal details submitted successfully!');
-        setFormData({
-          firstName: '',
-          lastName: '',
-          mobileNumber: '',
-          dob: '',
-          addressLine1: '',
-          addressLine2: '',
-          state: '',
-          city: '',
-          postalCode: '',
-          country: ''
-        });
-        setTimeout(() => {
-            router.push('/KycVerification/TransakForm');
-          });
-      } catch (error) {
-        console.error('Error submitting personal details:', error);
-        setMessage('Error submitting personal details. Please try again.');
-      }
+        try {
+            const response = await axios.post('http://localhost:8000/api/personal-details/', {
+                first_name: formData.firstName,
+                last_name: formData.lastName,
+                mobile_number: formData.mobileNumber,
+                dob: formData.dob,
+                address_line1: formData.addressLine1,
+                address_line2: formData.addressLine2,
+                state: formData.state,
+                city: formData.city,
+                postal_code: formData.postalCode,
+                country: formData.country
+            }, {
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            });
+            setMessage('Personal details submitted successfully!');
+            setFormData({
+                firstName: '',
+                lastName: '',
+                mobileNumber: '',
+                dob: '',
+                addressLine1: '',
+                addressLine2: '',
+                state: '',
+                city: '',
+                postalCode: '',
+                country: ''
+            });
+            setTimeout(() => {
+                router.push('/KycVerification/TransakForm');
+            }, 2000);  // Added a delay to ensure the message is visible before redirect
+        } catch (error) {
+            console.error('Error submitting personal details:', error);
+            setMessage('Error submitting personal details. Please try again.');
+        }
     }
-  };
+};
 
   return (
     <div className={styles.formContainer}>
