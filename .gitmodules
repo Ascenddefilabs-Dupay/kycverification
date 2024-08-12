@@ -1,0 +1,3 @@
+[submodule "suisend"]
+	path = suisend
+	url = https://github.com/Ascenddefilabs-suisend/suisend.git
