@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation';
 import axios from 'axios';
 import styles from './PanForm.module.css';
 import ProgressBar from '../kycform1/ProgressBar';
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 
 const PanForm = () => {
   const [panNumber, setPanNumber] = useState('');
@@ -94,9 +95,15 @@ const PanForm = () => {
     }
   };
 
+  const handleBackClick = () => {
+    router.push('/KycVerification/AdharVerification'); // Adjust the path as needed
+};
+
+
   return (
     <div className={styles.formContainer}>
       <div className={styles.card}>
+        <ArrowBackIcon className={styles.setting_back_icon} onClick={handleBackClick} />
         <form onSubmit={handleSubmit} className={styles.form}>
           <h2 className={styles.heading}>PAN Verification</h2>
           <ProgressBar step={2} totalSteps={3} />

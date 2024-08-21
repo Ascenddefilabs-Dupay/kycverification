@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation';
 import axios from 'axios';
 import styles from './AadharForm.module.css';
 import ProgressBar from '../kycform1/ProgressBar';
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 
 const AadharForm = () => {
   const [aadharNumber, setAadharNumber] = useState('');
@@ -95,9 +96,15 @@ const AadharForm = () => {
     }
   };
 
+  const handleBackClick = () => {
+    router.push('/KycVerification/kycform1'); // Adjust the path as needed
+};
+
   return (
     <div className={styles.formContainer}>
       <div className={styles.card}>
+        {/* Back Arrow */}
+        <ArrowBackIcon className={styles.setting_back_icon} onClick={handleBackClick} />
         <form onSubmit={handleSubmit} className={styles.form}>
           <h2 className={styles.heading}>Aadhar Verification</h2>
           <ProgressBar step={2} totalSteps={3} />
