@@ -123,7 +123,8 @@ const PersonalDetailsForm = () => {
                 country: ''
             });
             setTimeout(() => {
-                router.push('/KycVerification/TransakForm');
+                // router.push('/KycVerification/TransakForm');
+                window.location.href = 'http://localhost:3002/WalletManagement/WalletCreation';
             }, 2000);  // Added a delay to ensure the message is visible before redirect
         } catch (error) {
             console.error('Error submitting personal details:', error);
