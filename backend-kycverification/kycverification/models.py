@@ -68,8 +68,10 @@ class KYCDetail(models.Model):
         db_table = 'kyc'
 
     def __str__(self):
-        return f'{[self.user_id, self.kyc_id, self.country_name, self.document_type,
-                   self.document_number1, self.document_front_image1, self.document_back_image1,
-                   self.document_number2, self.document_front_image2, self.document_back_image2, self.investment,
-                   self.nfts, self.web3]}'
+        # return f'{[self.user_id, self.kyc_id, self.country_name, self.document_type,
+        #            self.document_number1, self.document_front_image1, self.document_back_image1,
+        #            self.document_number2, self.document_front_image2, self.document_back_image2, self.investment,
+        #            self.nfts, self.web3]}'
     
+        def __str__(self):
+            return str([self.user_id, self.kyc_id, self.country_name, self.document_type, self.document_number1, self.document_front_image1, self.document_back_image1, self.document_number2, self.document_front_image2, self.document_back_image2, self.investment, self.nfts, self.web3])

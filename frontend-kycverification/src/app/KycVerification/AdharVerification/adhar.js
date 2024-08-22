@@ -65,7 +65,7 @@ const AadharForm = () => {
 
       setTimeout(() => {
         router.push('/KycVerification/PanVerification');
-      }); // 5000 milliseconds = 5 seconds
+      }); 
 
     } catch (error) {
       console.error('Error submitting Aadhar:', error);
