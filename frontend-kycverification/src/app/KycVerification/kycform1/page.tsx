@@ -83,7 +83,6 @@
 // export default DocumentForm;
 
 
-
 'use client';
 
 import { useState, useEffect } from 'react';
@@ -103,33 +102,42 @@ const documentOptions = {
 };
 
 const DocumentForm = () => {
-    const [country_name, setCountryName] = useState(countries[0]); // Updated variable name
+    const [countryName, setCountryName] = useState(countries[0]); // Updated variable name
     const [documentType, setDocumentType] = useState('');
+    const [showAlert, setShowAlert] = useState(false); // State for alert visibility
+    const [alertMessage, setAlertMessage] = useState(''); // State for alert message
     const router = useRouter();
 
     useEffect(() => {
         if (documentType) {
             const handleSaveAndRedirect = async () => {
-                const data = { country_name, document_type: documentType }; // Updated field name
+                const data = { country_name: countryName, document_type: documentType }; // Updated field name
                 try {
                     await axios.post('http://localhost:8000/api/kyc-details/', data);
-                    alert('Document saved successfully!');
-                    // Define redirection URLs based on document type
-                    let redirectUrl = 'http://localhost:3000/KycVerification/AdharVerification';
-                    if (documentType === 'PanCard') {
-                        // Add logic for PanCard if needed
-                    }
-                    router.push(redirectUrl);
+                    setAlertMessage('Document saved successfully!');
+                    setShowAlert(true);
+                    setTimeout(() => {
+                        setAlertMessage('');
+                        setShowAlert(false);
+                        // Define redirection URLs based on document type
+                        let redirectUrl = '/KycVerification/AdharVerification';
+                        if (documentType === 'PanCard') {
+                            // Add logic for PanCard if needed
+                        }
+                        router.push(redirectUrl);
+                    }, 3000); // Hide alert after 3 seconds
                 } catch (error) {
                     console.error('There was an error saving the document!', error);
+                    setAlertMessage('Error saving document. Please try again.');
+                    setShowAlert(true);
                 }
             };
 
             handleSaveAndRedirect();
         }
-    }, [documentType, country_name, router]); // Updated dependency array
+    }, [documentType, countryName, router]); // Updated dependency array
 
-    const availableDocuments = country_name === 'India' ? documentOptions.India : documentOptions.Default; // Updated variable name
+    const availableDocuments = countryName === 'India' ? documentOptions.India : documentOptions.Default; // Updated variable name
 
     // Back button click handler
     const handleBackClick = () => {
@@ -147,8 +155,8 @@ const DocumentForm = () => {
                     <label className={styles.label}><br/>
                         Issuing country:</label>
                         <select 
-                            value={country_name} // Updated value
-                            onChange={(e) => setCountryName(e.target.value)} // Updated handler
+                            value={countryName}
+                            onChange={(e) => setCountryName(e.target.value)}
                             className={styles.select}
                         >
                             {countries.map((country) => (
@@ -170,6 +178,12 @@ const DocumentForm = () => {
                         ))}
                     </div>
                 </form>
+                {showAlert && (
+                    <div className={styles.customAlert}>
+                        <p>{alertMessage}</p>
+                        <button className={styles.closeButton} onClick={() => setShowAlert(false)}>Ok</button>
+                    </div>
+                )}
             </div>
         </div>
     );

@@ -213,3 +213,41 @@
     font-size: 14px;
     font-weight: bold;
 }
+
+
+
+.customAlert {
+    position: fixed;
+    top: 11%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: gray;
+    color: white;
+    padding: 10px;
+    border-radius: 10px;
+    z-index: 1000;
+    width: 65%;
+    max-width: 300px;
+    text-align: center;
+  }
+  
+  .customAlert p {
+    margin: 0 0 15px;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  
+  .closeButton {
+    background-color: #f0f0f0;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    color: black;
+    font-weight: bold;
+    width: 30%;
+  }
+
+  .select option {
+    background-color: #333;
+    color: white;
+}
