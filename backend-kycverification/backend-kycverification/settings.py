@@ -28,7 +28,7 @@ SECRET_KEY = 'django-insecure-*k+)r$e0s-h)93_i-r%0iu^90h6czk)gf830t5jiv&)w&m4c-3
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['kycverification-rcfpsxcera-uc.a.run.app']
 
 
 # Application definition
