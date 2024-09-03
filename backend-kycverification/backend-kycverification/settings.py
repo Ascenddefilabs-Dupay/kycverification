@@ -30,7 +30,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['kycverification-rcfpsxcera-uc.a.run.app']
 
-
+# ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
