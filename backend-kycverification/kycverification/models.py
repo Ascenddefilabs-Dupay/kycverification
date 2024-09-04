@@ -83,19 +83,20 @@ class KYCDetail(models.Model):
 
 class CustomUser(models.Model):
     user_id = models.CharField(max_length=100, unique=True, blank=False)
-    first_name = models.CharField(max_length=100)
-    last_name = models.CharField(max_length=100)
-    mobile_number = models.CharField(max_length=10)
-    dob = models.DateField()
-    address_line1 = models.CharField(max_length=255)
-    address_line2 = models.CharField(max_length=255, blank=True, null=True)
-    state = models.CharField(max_length=100)
-    city = models.CharField(max_length=100)
-    postal_code = models.CharField(max_length=20)
-    country = models.CharField(max_length=100)
+    user_first_name = models.CharField(max_length=100)
+    user_last_name = models.CharField(max_length=100)
+    user_phone_number = models.CharField(max_length=10)
+    user_dob = models.DateField()
+    user_address_line_1 = models.CharField(max_length=255)  # Ensure this matches your DB column
+    user_address_line_2 = models.CharField(max_length=255, blank=True, null=True)
+    user_state = models.CharField(max_length=100)
+    user_city = models.CharField(max_length=100)
+    user_pin_code = models.CharField(max_length=20)
+    user_country = models.CharField(max_length=100)
 
     class Meta:
-        db_table = 'users_details'
+        db_table = 'users'
+        managed=False
 
     def __str__(self):
         return f'{self.first_name} {self.last_name}'
