@@ -50,8 +50,8 @@ class Project(models.Model):
     
 
 class KYCDetail(models.Model):
-    user_id = models.CharField(max_length=100)
-    kyc_id = models.CharField(max_length=100, unique=True)
+    user_id = models.CharField(max_length=8, primary_key=True)
+    kyc_id = models.CharField(max_length=100, unique=True,blank=True, null=True)
     country_name = models.CharField(max_length=100, blank=True, null=True)
     document_type = models.CharField(max_length=100, blank=True, null=True)
     document_number1 = models.CharField(max_length=12, blank=True, null=True)
@@ -65,7 +65,8 @@ class KYCDetail(models.Model):
     web3 = models.BooleanField(default=False, blank=True, null=True)
 
     class Meta:
-        db_table = 'kyc'
+        db_table = 'kyc_data'
+        managed=False
 
     def __str__(self):
         # return f'{[self.user_id, self.kyc_id, self.country_name, self.document_type,
@@ -82,7 +83,7 @@ class KYCDetail(models.Model):
 
 
 class CustomUser(models.Model):
-    user_id = models.CharField(max_length=100, unique=True, blank=False)
+    user_id = models.CharField(max_length=100, unique=True, blank=False, primary_key=True)
     user_first_name = models.CharField(max_length=100)
     user_last_name = models.CharField(max_length=100)
     user_phone_number = models.CharField(max_length=10)

@@ -28,9 +28,9 @@ SECRET_KEY = 'django-insecure-*k+)r$e0s-h)93_i-r%0iu^90h6czk)gf830t5jiv&)w&m4c-3
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['kycverification-rcfpsxcera-uc.a.run.app']
+# ALLOWED_HOSTS = ['kycverification-rcfpsxcera-uc.a.run.app']
 
-# ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost','127.0.0.1']
 # Application definition
 
 INSTALLED_APPS = [
@@ -60,7 +60,6 @@ MIDDLEWARE = [
 ]
 
 CORS_ALLOWED_ORIGINS = [
-    "http://localhost:3000",
     "http://127.0.0.1:3000",
 ]
 
