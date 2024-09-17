@@ -28,9 +28,11 @@ SECRET_KEY = 'django-insecure-*k+)r$e0s-h)93_i-r%0iu^90h6czk)gf830t5jiv&)w&m4c-3
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['kycverification-rcfpsxcera-uc.a.run.app']
+#ALLOWED_HOSTS = ['kycverification-ind-255574993735.asia-south1.run.app']
 
-# ALLOWED_HOSTS = ['localhost','127.0.0.1']
+#ALLOWED_HOSTS = ['localhost','127.0.0.1']
+ALLOWED_HOSTS = ['*']
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -41,7 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
-     'corsheaders',
+    'corsheaders',
     'kycverification',
     'cloudinary',
     'cloudinary_storage',
@@ -60,7 +62,9 @@ MIDDLEWARE = [
 ]
 
 CORS_ALLOWED_ORIGINS = [
+   "http://localhost:3000",
     "http://127.0.0.1:3000",
+    'https://dupay.biz',
 ]
 
 CORS_ALLOW_ALL_ORIGINS = True
