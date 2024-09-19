@@ -86,7 +86,7 @@ class CustomUser(models.Model):
     user_id = models.CharField(max_length=100, unique=True, blank=False, primary_key=True)
     user_first_name = models.CharField(max_length=100)
     user_last_name = models.CharField(max_length=100)
-    user_phone_number = models.CharField(max_length=10)
+    user_phone_number = models.CharField(max_length=15)
     user_dob = models.DateField()
     user_address_line_1 = models.CharField(max_length=255)  # Ensure this matches your DB column
     user_address_line_2 = models.CharField(max_length=255, blank=True, null=True)
